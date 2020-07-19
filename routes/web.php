@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(function () {
     Route::get('dashboard','DashboardController@index');
+    Route::resource('tag','TagController');
 });
 
 Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {

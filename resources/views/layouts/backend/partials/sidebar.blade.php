@@ -26,9 +26,9 @@
             </div>
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('tag.index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Post</span>
+                    <span>Tag</span>
                 </a>
             </li>
 
