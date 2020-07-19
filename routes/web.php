@@ -19,4 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(function () {
+    Route::get('dashboard','DashboardController@index');
+});
+
+Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {
+    Route::get('dashboard','DashboardController@index');
+});
+
+
