@@ -27,12 +27,22 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
     Route::get('subscriber','SubscriberController@index');
     Route::delete('subscriber/{id}','SubscriberController@delete');
 
-    Route::get('setting','SettingController@index');
+    Route::get('profile','SettingController@index');
+    Route::put('profile/update','SettingController@update');
+
+    Route::get('password','SettingController@password');
+    Route::put('password/update','SettingController@password_update');
 });
 
 Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {
     Route::get('dashboard','DashboardController@index');
     Route::resource('post','PostController');
+
+    Route::get('profile','SettingController@index');
+    Route::put('profile/update','SettingController@update');
+
+    Route::get('password','SettingController@password');
+    Route::put('password/update','SettingController@password_update');
 });
 
 Route::post('subscriber','SubscriberController@store');

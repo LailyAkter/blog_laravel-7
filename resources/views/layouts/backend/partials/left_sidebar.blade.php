@@ -11,6 +11,7 @@
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
                     <li role="seperator" class="divider"></li>
+
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -65,10 +66,26 @@
                 </li>
                 <li class="{{ Request::is('admin/subscriber*') ? 'active' : '' }}">
                     <a href="{{ url('admin/subscriber') }}">
-                        <i class="material-icons">library_books</i>
+                        <i class="material-icons">subscriptions</i>
                         <span>Subscribers</span>
                     </a>
                 </li>
+
+                <li class='header'>System</li>
+
+                <li class="{{ Request::is('admin/profile*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/profile') }}">
+                        <i class="material-icons">settings</i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('admin/password*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/password') }}">
+                        <i class="material-icons">settings</i>
+                        <span>Password Change</span>
+                    </a>
+                </li>
+
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -92,10 +109,25 @@
                     </a>
                 </li>
                 
+                <li class='header'>System</li>
+
+                <li class="{{ Request::is('author/profile*') ? 'active' : '' }}">
+                    <a href="{{ url('author/profile') }}">
+                        <i class="material-icons">settings</i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('author/password*') ? 'active' : '' }}">
+                    <a href="{{ url('author/password') }}">
+                        <i class="material-icons">settings</i>
+                        <span>Password Change</span>
+                    </a>
+                </li>
+
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();">
                         <i class="material-icons">input</i>
                         <span>Logout</span>
                     </a>
