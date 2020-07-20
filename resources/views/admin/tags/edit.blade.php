@@ -28,7 +28,7 @@
                                 @endif
                             </div>
 
-                            <button type='submit' class='btn btn-success'>Save</button>
+                            <button type='submit' class='btn btn-success'>Update</button>
                             <a href="{{route('tag.index')}}" class='btn btn-danger'>Back</a>
                         </form>
                     </div>
