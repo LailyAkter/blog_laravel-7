@@ -1,115 +1,100 @@
 @extends('layouts.backend.master')
+
 @section('title','Tag')
 
-@section('css')
-<!-- Custom styles for this page -->
-<link href="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-@endsection
+@push('css')
+    <!-- JQuery DataTable Css -->
+    <link href="{{ asset('admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+@endpush
 
 @section('content')
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">
-        <a href="{{route('tag.create')}}" class="btn btn-primary">
-            <i class="fas fa-plus">
-                <span style='margin-left:5px'>Add Tag</span>
-            </i>
-        </a>
-    </h1>
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">All Tag</h6>
+    <div class="container-fluid">
+        <div class="block-header">
+            <a class="btn btn-primary waves-effect" href="{{ route('tag.create') }}">
+                <i class="material-icons">add</i>
+                <span>Add New Tag</span>
+            </a>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>SL</th>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>SL</th>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        @foreach($tags as $key=>$tag)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$tag->name}}</td>
-                                <td>{{$tag->slug}}</td>
-                                <td>{{$tag->created_at->diffForHumans()}}</td>
-                                <td>{{$tag->updated_at->diffForHumans()}}</td>
-                                <td style='float:left'>
-                                    <a class="btn btn-info btn-sm" href="{{route('tag.edit',$tag->id)}}">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        <span style='margin-left:5px'>EDIT</span>
-                                    </a>
-                                </td>
-                                <td style='float:left'>
-                                    <form action="{{route('tag.destroy',$tag->id)}}" method='POST'>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type='submit' class="btn btn-danger btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                            <span style='margin-left:5px'>DELETE</span>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            ALL TAGS
+                            <span class="badge bg-blue">{{ $tags->count() }}</span>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Post Count</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Post Count</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach($tags as $key=>$tag)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $tag->name }}</td>
+                                            <td>{{ $tag->posts->count() }}</td>
+                                            <td>{{ $tag->created_at->diffForHumans()}}</td>
+                                            <td>{{ $tag->updated_at->diffForHumans() }}</td>
+                                            <td style='float:left'>
+                                                <a href="{{ route('tag.edit',$tag->id) }}" class="btn btn-info waves-effect">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
+                                            </td>
+                                            <td style='float:left'>
+                                                <form action="{{route('tag.destroy',$tag->id)}}" method='POST'>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type='submit' class="btn btn-danger btn-sm">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- #END# Exportable Table -->
     </div>
-
-</div>
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
 @endsection
 
-@section('js')
-<!-- Page level plugins -->
-<script src="{{asset('backend/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+@push('js')
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="{{ asset('admin/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 
-<!-- Page level custom scripts -->
-<script>
-    // Call the dataTables jQuery plugin
-$(document).ready(function () {
-    $('#dataTable').DataTable({
-        lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-        columnDefs: [{
-        targets: [0],
-        orderData: [0, 1]
-        }, {
-        targets: [1],
-        orderData: [1, 0]
-        }, {
-        targets: [5],
-        orderData: [5, 0]
-        }]
-    });
-});
-</script>
-
-@endsection
+    <script src="{{ asset('admin/js/pages/tables/jquery-datatable.js') }}"></script>
+    
+@endpush

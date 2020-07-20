@@ -1,51 +1,61 @@
 @extends('layouts.backend.master')
-@section('title','Create Category')
+
+@section('title','Category')
+
+@push('css')
+
+@endpush
 
 @section('content')
-    <section class="content">
-        <div class="row justify-content-center">
-            <div class="col-md-8 mt-3">
-                <div class="card border-left-success">
-                    <div class="card-header">
-                        <h3 class="card-title">Add New Category</h3>
+    <div class="container-fluid">
+        <!-- Vertical Layout | With Floating Label -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                           ADD NEW CATEGORY
+                        </h2>
                     </div>
-                    <div class="card-body">
-            
-                        <form action="{{route('category.store')}}" method='post' enctype="multipart/form-data">
-                        @csrf
-                            <div class="form-group">
-                                <label for="inputName">Name</label>
-                                <input 
-                                    type="text" 
-                                    class="form-control @error('name') is-invalid @enderror" 
-                                    name='name'
-                                    placeholder='Enter Your Name'
-                                    value="{{old('name')}}"
-                                />
-                                @if($errors->has('name'))
-                                    <span class='invalid-feedback'>Name is Required</span>
-                                @endif
+                    <div class="body">
+                        <form action="{{ route('category.store') }}" method="POST"  enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        class="form-control" 
+                                        name="name"
+                                        value="{{old('name')}}"
+                                    />
+                                    <label class="form-label">Category  Name</label>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputName">Category Image</label>
-                                <input 
-                                    type="file" 
-                                    class="form-control @error('image') is-invalid @enderror" 
-                                    name='image'
-                                    value="{{old('image')}}"
-                                />
-                                @if($errors->has('image'))
-                                    <span class='invalid-feedback'>Image is Required</span>
-                                @endif
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <label>Category Image</label>
+                                    <input 
+                                        type="file" 
+                                        id="image" 
+                                        class="form-control" 
+                                        name="image"
+                                        value="{{old('image')}}"
+                                    />
+                                </div>
                             </div>
 
-                            <button type='submit' class='btn btn-success'>Save</button>
-                            <a href="{{route('category.index')}}" class='btn btn-danger'>Back</a>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ route('category.index') }}">BACK</a>
+                            <button type="submit" class="btn btn-primary m-t-15 waves-effect">SAVE</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
+
+@push('script')
+
+@endpush
