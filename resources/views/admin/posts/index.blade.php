@@ -79,6 +79,11 @@
                                                 @endif
                                             </td>
                                             <td>{{ $post->created_at->diffForHumans() }}</td>
+                                            <td>
+                                                <a href="{{ route('post.show',$post->id) }}" class="btn btn-success waves-effect">
+                                                    <i class="material-icons">visibility</i>
+                                                </a>
+                                            </td>
                                             <td style='float:left'>
                                                 <a href="{{ route('post.edit',$post->id) }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>

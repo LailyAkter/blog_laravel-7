@@ -103,7 +103,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::latest()->get();
+        $tags = Tag::latest()->get();
+        $post = Post::findOrFail($id);
+        return view('admin.posts.show',compact('post','categories','tags'));
     }
 
     /**
