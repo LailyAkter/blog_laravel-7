@@ -63,6 +63,12 @@
                         <span>Pending Post</span>
                     </a>
                 </li>
+                <li class="{{ Request::is('admin/subscriber*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/subscriber') }}">
+                        <i class="material-icons">library_books</i>
+                        <span>Subscribers</span>
+                    </a>
+                </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();

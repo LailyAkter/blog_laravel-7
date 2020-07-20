@@ -12,16 +12,19 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
 	<!-- Stylesheets -->
-
 	<link href="{{asset('frontend/common-css/bootstrap.css')}}" rel="stylesheet">
+
+	<link href="{{asset('frontend/common-css/swiper.css')}}" rel="stylesheet">
 
 	<link href="{{asset('frontend/common-css/ionicons.css')}}" rel="stylesheet">
 
-    <!-- main css -->
+
 	<link href="{{asset('frontend/css/styles.css')}}" rel="stylesheet">
 
-    <!-- responsive css -->
 	<link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet">
+
+	<!-- toastr -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     @yield('css')
 
@@ -30,9 +33,6 @@
 
 	<!-- Navbar -->
     @include('layouts.frontend.partials.navbar')
-
-	<div class="slider"></div>
-    <!-- slider -->
 
     <!-- section -->
     @yield("content")
@@ -43,14 +43,28 @@
 
 
 	<!-- SCIPTS -->
-
 	<script src="{{asset('frontend/common-js/jquery-3.1.1.min.js')}}"></script>
 
 	<script src="{{asset('frontend/common-js/tether.min.js')}}"></script>
 
 	<script src="{{asset('frontend/common-js/bootstrap.js')}}"></script>
 
+	<script src="{{asset('frontend/common-js/swiper.js')}}"></script>
+
 	<script src="{{asset('frontend/common-js/scripts.js')}}"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	{!! Toastr::message() !!}
+	<script>
+		@if($errors->any())
+			@foreach($errors->all() as $error)
+				toastr.error('{{ $error }}','Error',{
+					closeButton:true,
+					progressBar:true,
+				});
+			@endforeach
+		@endif
+	</script>
 
     @yield('js')
 

@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -26,11 +24,17 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
     Route::resource('post','PostController');
     Route::get('pending/post','PostController@pending');
     Route::put('post/{id}/approved','PostController@approved');
+    Route::get('subscriber','SubscriberController@index');
+    Route::delete('subscriber/{id}','SubscriberController@delete');
+
+    Route::get('setting','SettingController@index');
 });
 
 Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {
     Route::get('dashboard','DashboardController@index');
     Route::resource('post','PostController');
 });
+
+Route::post('subscriber','SubscriberController@store');
 
 
