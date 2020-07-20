@@ -10,7 +10,7 @@
 @section('content')
     <div class="container-fluid">
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row clearfix">
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ route('category.index') }}">BACK</a>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ url('admin/post') }}">BACK</a>
                             <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 
                         </div>
@@ -96,7 +96,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <textarea id="tinymce" name="body">{{old($post->body)}}</textarea>
+                            <textarea id="tinymce" name="body">{{old('body')}}</textarea>
                         </div>
                     </div>
                 </div>

@@ -52,15 +52,21 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/post*') ? 'active' : '' }}">
-                    <a href="{{ route('post.index') }}">
+                    <a href="{{ url('admin/post') }}">
                         <i class="material-icons">library_books</i>
                         <span>Posts</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('admin/pending*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/pending/post') }}">
+                        <i class="material-icons">library_books</i>
+                        <span>Pending Post</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();">
                         <i class="material-icons">input</i>
                         <span>Logout</span>
                     </a>
@@ -72,6 +78,13 @@
             @endif
 
             @if(Request::is('author*'))
+
+                <li class="{{ Request::is('author/post*') ? 'active' : '' }}">
+                    <a href="{{ url('author/post') }}">
+                        <i class="material-icons">library_books</i>
+                        <span>Posts</span>
+                    </a>
+                </li>
                 
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"

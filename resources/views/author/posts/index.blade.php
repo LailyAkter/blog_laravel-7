@@ -10,7 +10,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <a class="btn btn-primary waves-effect" href="{{ url('admin/post/create') }}">
+            <a class="btn btn-primary waves-effect" href="{{ route('post.create') }}">
                 <i class="material-icons">add</i>
                 <span>Add New Post</span>
             </a>
@@ -79,18 +79,18 @@
                                                 @endif
                                             </td>
                                             <td>{{ $post->created_at->diffForHumans() }}</td>
-                                            <td style='float:left'>
-                                                <a href="{{ url('admin/post/'.$post->id) }}" class="btn btn-primary waves-effect">
-                                                   <i class="material-icons">visibility</i>
+                                            <td>
+                                                <a href="{{ url('author/post/'.$post->id) }}" class="btn btn-success waves-effect">
+                                                    <i class="material-icons">visibility</i>
                                                 </a>
                                             </td>
                                             <td style='float:left'>
-                                                <a href="{{ url('admin/post/'.$post->id.'/edit') }}" class="btn btn-info waves-effect">
+                                                <a href="{{ url('author/post/'.$post->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
                                             <td style='float:left'>
-                                                <form action="{{url('admin/post/'.$post->id)}}" method='POST'>
+                                                <form action="{{url('author/post/'.$post->id)}}" method='POST'>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type='submit' class="btn btn-danger btn-sm">

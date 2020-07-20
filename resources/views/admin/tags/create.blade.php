@@ -18,7 +18,7 @@
                         </h2>
                     </div>
                     <div class="body">
-                        <form action="{{ route('tag.store') }}" method="POST">
+                        <form action="{{ url('admin/tag') }}" method="POST">
                             @csrf
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
 
-                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ route('tag.index') }}">BACK</a>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ url('admin/tag') }}">BACK</a>
                             <button type="submit" class="btn btn-primary m-t-15 waves-effect">SAVE</button>
                         </form>
                     </div>

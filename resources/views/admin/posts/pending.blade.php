@@ -85,12 +85,12 @@
                                                 </a>
                                             </td>
                                             <td style='float:left'>
-                                                <a href="{{ url('admin/post/'.$post->id.'/edit') }}" class="btn btn-info waves-effect">
+                                                <a href="{{ url('admin/post',$post->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
                                             <td style='float:left'>
-                                                <form action="{{url('admin/post/'.$post->id)}}" method='POST'>
+                                                <form action="{{url('admin/post',$post->id)}}" method='POST'>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type='submit' class="btn btn-danger btn-sm">

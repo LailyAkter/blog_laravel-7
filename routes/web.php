@@ -24,10 +24,13 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
     Route::resource('tag','TagController');
     Route::resource('category','CategoryController');
     Route::resource('post','PostController');
+    Route::get('pending/post','PostController@pending');
+    Route::put('post/{id}/approved','PostController@approved');
 });
 
 Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {
     Route::get('dashboard','DashboardController@index');
+    Route::resource('post','PostController');
 });
 
 

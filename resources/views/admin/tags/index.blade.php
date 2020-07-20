@@ -10,7 +10,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <a class="btn btn-primary waves-effect" href="{{ route('tag.create') }}">
+            <a class="btn btn-primary waves-effect" href="{{ url('admin/tag/create') }}">
                 <i class="material-icons">add</i>
                 <span>Add New Tag</span>
             </a>
@@ -57,12 +57,12 @@
                                             <td>{{ $tag->created_at->diffForHumans()}}</td>
                                             <td>{{ $tag->updated_at->diffForHumans() }}</td>
                                             <td style='float:left'>
-                                                <a href="{{ route('tag.edit',$tag->id) }}" class="btn btn-info waves-effect">
+                                                <a href="{{ url('admin/tag',$tag->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
                                             <td style='float:left'>
-                                                <form action="{{route('tag.destroy',$tag->id)}}" method='POST'>
+                                                <form action="{{url('admin/tag',$tag->id)}}" method='POST'>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type='submit' class="btn btn-danger btn-sm">

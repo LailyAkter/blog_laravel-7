@@ -10,15 +10,14 @@
 @section('content')
     <div class="container-fluid">
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ url('admin/post',$post->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('author/post') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="row clearfix">
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                               UPDATE POST
+                               ADD NEW POST
                             </h2>
                         </div>
                         <div class="body">
@@ -29,7 +28,7 @@
                                             id="title" 
                                             class="form-control" 
                                             name="title"
-                                            value="{{$post->title}}"
+                                            value="{{old('title')}}"
                                         />
                                         <label class="form-label">Post Title</label>
                                     </div>
@@ -81,8 +80,8 @@
                                 </div>
                             </div>
 
-                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ url('admin/post') }}">BACK</a>
-                            <button type="submit" class="btn btn-primary m-t-15 waves-effect">UPDATE</button>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ url('author/post') }}">BACK</a>
+                            <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 
                         </div>
                     </div>
@@ -97,7 +96,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <textarea id="tinymce" name="body">{{$post->body}}</textarea>
+                            <textarea id="tinymce" name="body">{{old('body')}}</textarea>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
 @section('content')
     <div class="container-fluid">
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ url('admin/post',$post->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('author/post',$post->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row clearfix">
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ url('admin/post') }}">BACK</a>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{url('author/post') }}">BACK</a>
                             <button type="submit" class="btn btn-primary m-t-15 waves-effect">UPDATE</button>
 
                         </div>

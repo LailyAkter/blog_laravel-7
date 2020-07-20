@@ -7,26 +7,19 @@
 @section('content')
 
 <div class="container-fluid">
-    <a href="{{url('admin/post',) }}" class="btn btn-primary waves-effect" style='margin-bottom:10px'>Back</a>
+    <a href="{{ route('post.index',) }}" class="btn btn-primary waves-effect" style='margin-bottom:10px'>Back</a>
 
     @if($post->is_approved == false)
-        <span style='float:right'>
-            <form action="{{url('admin/post/'.$post->id.'/approved')}}" method='POST'>
-                @csrf
-                @method('PUT')
-                <button type='submit' class="btn btn-success btn-sm pull-right">
-                    <i class="material-icons">done</i>
-                    <span>Approve</span>
-                </button>
-            </form>
-        </span>
+        <button type='button' class="btn btn-success btn-sm pull-right"  style='margin-bottom:10px'>
+            <i class="material-icons">done</i>
+            <span>Approve</span>
+        </button>
     @else
-        <button type='button' class="btn btn-success btn-sm pull-right disabled"  style='margin-bottom:10px'>
+        <button type='button' class="btn btn-success btn-sm pull-right disable"  style='margin-bottom:10px'>
             <i class="material-icons">done</i>
             <span>Approved</span>
         </button>
     @endif
-    
     <div class="row clearfix">
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
