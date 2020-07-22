@@ -24,11 +24,14 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
     Route::resource('post','PostController');
     Route::get('pending/post','PostController@pending');
     Route::put('post/{id}/approved','PostController@approved');
+
+    Route::get('favourite','FavouriteController@index');
+
     Route::get('subscriber','SubscriberController@index');
     Route::delete('subscriber/{id}','SubscriberController@delete');
 
     Route::get('profile','SettingController@index');
-    Route::put('profile/update','SettingController@update');
+    Route::post('profile/update','SettingController@update');
 
     Route::get('password','SettingController@password');
     Route::put('password/update','SettingController@password_update');
@@ -38,13 +41,21 @@ Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->grou
     Route::get('dashboard','DashboardController@index');
     Route::resource('post','PostController');
 
+    Route::get('favourite','FavouriteController@index');
+    
     Route::get('profile','SettingController@index');
-    Route::put('profile/update','SettingController@update');
+    Route::post('profile/update','SettingController@update');
 
     Route::get('password','SettingController@password');
     Route::put('password/update','SettingController@password_update');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('favourite/{id}/create','FavouriteController@store');
+});
+
+Route::get('single/post/{slug}','SinglePostController@index');
+Route::get('posts','SinglePostController@post');
 Route::post('subscriber','SubscriberController@store');
 
 

@@ -12,7 +12,6 @@
                     <div class="body">
                         <form action="{{url('author/profile/update')}}" method='post'>
                         @csrf
-                        @method('PUT')
                             <div class="form-group form-float">
                                 <div class='form-line'>
                                     <input 

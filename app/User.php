@@ -45,4 +45,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+    public function favourite_post(){
+        return $this->belongsToMany('App\Post');
+    }
+
 }

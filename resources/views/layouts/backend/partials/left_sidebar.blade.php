@@ -64,6 +64,12 @@
                         <span>Pending Post</span>
                     </a>
                 </li>
+                <li class="{{ Request::is('admin/favourite*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/favourite') }}">
+                        <i class="material-icons">favorite</i>
+                        <span>Favourite Post</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('admin/subscriber*') ? 'active' : '' }}">
                     <a href="{{ url('admin/subscriber') }}">
                         <i class="material-icons">subscriptions</i>
@@ -106,6 +112,13 @@
                     <a href="{{ url('author/post') }}">
                         <i class="material-icons">library_books</i>
                         <span>Posts</span>
+                    </a>
+                </li>
+
+                <li class="{{ Request::is('author/favourite*') ? 'active' : '' }}">
+                    <a href="{{ url('author/favourite') }}">
+                        <i class="material-icons">favorite</i>
+                        <span>Favourite Post</span>
                     </a>
                 </li>
                 

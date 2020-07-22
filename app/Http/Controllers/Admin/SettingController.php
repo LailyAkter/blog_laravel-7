@@ -26,33 +26,20 @@ class SettingController extends Controller
             'email' => 'required',
         ]);
 
-        $image = $request->file('image');
-        $slug = Str::slug($request->name);
-        $user = User::findOrFail(Auth::id());
-        if (isset($image))
-        {
-            $currentDate = Carbon::now()->toDateString();
-            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-            if (!Storage::disk('public')->exists('profile'))
-            {
-                Storage::disk('public')->makeDirectory('profile');
-            }
-            //Delete old image form profile folder
-            if (Storage::disk('public')->exists('profile/'.$user->image))
-            {
-                Storage::disk('public')->delete('profile/'.$user->image);
-            }
-            $profile = Image::make($image)->resize(500,500)->stream();
-            Storage::disk('public')->put('profile/'.$imageName,$profile);
-        } else {
-            $imageName = $user->image;
+        if($request->hasFile('image')){
+            $avatar = $request->file('image');
+			$filename  = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('uploads/avatars/' . $filename);
+            Image::make($avatar->getRealPath())->resize(468, 249)->save($path);
+            $user = Auth::user();
+            $user->avatar = 'uploads/avatars/'.$filename;
+            $user->name = $request->name;
+            $user->user_name = $request->user_name;
+            $user->about = $request->about;
+            $user->email = $request->email;
+            $user->save();
         }
-        $user->image = $imageName;
-        $user->name = $request->name;
-        $user->user_name = $request->user_name;
-        $user->about = $request->about;
-        $user->email = $request->email;
-        $user->save();
+
         
         Toastr::success('Profile Updated Successfully','Success');
 

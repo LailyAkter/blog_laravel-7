@@ -17,4 +17,8 @@ class Post extends Model
     public function categories(){
         return $this->belongsToMany('App\Category');
     }
+
+    public function favourite_users(){
+        return $this->belongsToMany('App\User');
+    }
 }
