@@ -64,7 +64,12 @@ Route::middleware('auth')->group(function () {
 Route::get('single/post/{slug}','SinglePostController@index');
 Route::get('posts','SinglePostController@post');
 
+Route::get('category/{slug}','SinglePostController@postByCategory');
+Route::get('tag/{slug}','SinglePostController@postByTag');
 
 Route::post('subscriber','SubscriberController@store');
 
-
+View::composer('layouts.frontend.partials.footer',function($view){
+    $catgories = App\Category::all();
+    $view->with('catgories',$catgories);
+});

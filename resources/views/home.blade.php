@@ -18,7 +18,7 @@
 		<div class="swiper-wrapper">
 			@foreach($categories as $category)
 				<div class="swiper-slide">
-					<a class="slider-category" href="#">
+					<a class="slider-category" href="{{url('category/'.$category->slug)}}">
 						<div class="blog-image">
 							<img src="{{asset('storage/category/slider/'.$category->image)}}" alt="{{$category->name}}">
 						</div>
