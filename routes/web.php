@@ -35,6 +35,9 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
 
     Route::get('password','SettingController@password');
     Route::put('password/update','SettingController@password_update');
+
+    Route::get('comment','CommentController@index');
+    Route::delete('comment/{id}','CommentController@delete');
 });
 
 Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->group(function () {
@@ -48,14 +51,20 @@ Route::middleware('auth', 'author')->namespace('Author')->prefix('author')->grou
 
     Route::get('password','SettingController@password');
     Route::put('password/update','SettingController@password_update');
+
+    Route::get('comment','CommentController@index');
+    Route::delete('comment/{id}','CommentController@delete');
 });
 
 Route::middleware('auth')->group(function () {
     Route::post('favourite/{id}/create','FavouriteController@store');
+    Route::post('comment/{id}','CommentController@store');
 });
 
 Route::get('single/post/{slug}','SinglePostController@index');
 Route::get('posts','SinglePostController@post');
+
+
 Route::post('subscriber','SubscriberController@store');
 
 
