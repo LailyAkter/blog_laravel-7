@@ -27,6 +27,9 @@ Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(f
 
     Route::get('favourite','FavouriteController@index');
 
+    Route::get('author','AuthorController@index');
+    Route::delete('author/{id}','AuthorController@delete');
+
     Route::get('subscriber','SubscriberController@index');
     Route::delete('subscriber/{id}','SubscriberController@delete');
 
@@ -68,6 +71,9 @@ Route::get('category/{slug}','SinglePostController@postByCategory');
 Route::get('tag/{slug}','SinglePostController@postByTag');
 
 Route::post('subscriber','SubscriberController@store');
+
+Route::get('profile/{username}','AuthorController@profile');
+
 
 View::composer('layouts.frontend.partials.footer',function($view){
     $catgories = App\Category::all();

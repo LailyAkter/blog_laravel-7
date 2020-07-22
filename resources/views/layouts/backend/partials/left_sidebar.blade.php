@@ -77,10 +77,17 @@
                     </a>
                 </li>
 
-                 <li class="{{ Request::is('admin/comment*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/comment*') ? 'active' : '' }}">
                     <a href="{{ url('admin/comment') }}">
                         <i class="material-icons">comment</i>
                         <span>Comments</span>
+                    </a>
+                </li>
+            
+                <li class="{{ Request::is('admin/author*') ? 'active' : '' }}">
+                    <a href="{{ url('admin/author') }}">
+                        <i class="material-icons">account_circle</i>
+                        <span>Authors</span>
                     </a>
                 </li>
 
@@ -114,7 +121,12 @@
             @endif
 
             @if(Request::is('author*'))
-
+                <li class="{{ Request::is('author/dashboard') ? 'active' : '' }}">
+                    <a href="{{ url('author/dashboard') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('author/post*') ? 'active' : '' }}">
                     <a href="{{ url('author/post') }}">
                         <i class="material-icons">library_books</i>
