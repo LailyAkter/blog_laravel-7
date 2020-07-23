@@ -9,6 +9,12 @@
     .favourite_post{
         color:blue;
     }
+    .slider{
+        height:500px;
+        width:100%;
+        background-size:cover;
+        background-image :url({{asset('storage/avatar/slider/'.$user->image)}});
+    }
     </style>
 @endsection
 

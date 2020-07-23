@@ -35,7 +35,7 @@ class SettingController extends Controller
             $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
             if (!Storage::disk('public')->exists('avatar'))
             {
-             Storage::disk('public')->makeDirectory('avatar');
+                Storage::disk('public')->makeDirectory('avatar');
             }
             // Delete old image form Avatar folder
             if (Storage::disk('public')->exists('avatar/'.$user->image))
@@ -44,6 +44,19 @@ class SettingController extends Controller
             }
             $avatar = Image::make($image)->resize(500,500)->stream();
             Storage::disk('public')->put('avatar/'.$imageName,$avatar);
+
+            // Avatar Slider
+            if (!Storage::disk('public')->exists('avatar/slider'))
+            {
+                Storage::disk('public')->makeDirectory('avatar/slider');
+            }
+            // Delete old image form Avatar Slider folder
+            if (Storage::disk('public')->exists('avatar/slider/'.$user->image))
+            {
+                Storage::disk('public')->delete('avatar/slider/'.$user->image);
+            }
+            $avatar_image = Image::make($image)->resize(1600,1066)->stream();
+            Storage::disk('public')->put('avatar/slider/'.$imageName,$avatar_image);
         } else {
             $imageName = $user->image;
         }
