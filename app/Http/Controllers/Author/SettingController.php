@@ -33,17 +33,17 @@ class SettingController extends Controller
         {
             $currentDate = Carbon::now()->toDateString();
             $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-            if (!Storage::disk('public')->exists('profile'))
+            if (!Storage::disk('public')->exists('avatar'))
             {
-                Storage::disk('public')->makeDirectory('profile');
+                Storage::disk('public')->makeDirectory('avatar');
             }
-            //Delete old image form profile folder
-            if (Storage::disk('public')->exists('profile/'.$user->image))
+            //Delete old image form avatar folder
+            if (Storage::disk('public')->exists('avatar/'.$user->image))
             {
-                Storage::disk('public')->delete('profile/'.$user->image);
+                Storage::disk('public')->delete('avatar/'.$user->image);
             }
-            $profile = Image::make($image)->resize(500,500)->stream();
-            Storage::disk('public')->put('profile/'.$imageName,$profile);
+            $avatar = Image::make($image)->resize(500,500)->stream();
+            Storage::disk('public')->put('avatar/'.$imageName,$avatar);
         } else {
             $imageName = $user->image;
         }

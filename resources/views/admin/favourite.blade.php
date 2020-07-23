@@ -29,7 +29,7 @@
                                     <th>Author</th>
                                     <th>Image</th>
                                     <th><i class="material-icons">favorite</i></th>
-                                    <!-- <th><i class="material-icons">comment</i></th> -->
+                                    <th><i class="material-icons">comment</i></th>
                                     <th><i class="material-icons">visibility</i></th>
                                     <th>Action</th>
                                 </tr>
@@ -41,7 +41,7 @@
                                     <th>Author</th>
                                     <th>Image</th>
                                     <th><i class="material-icons">favorite</i></th>
-                                    <!-- <th><i class="material-icons">comment</i></th> -->
+                                    <th><i class="material-icons">comment</i></th>
                                     <th><i class="material-icons">visibility</i></th>
                                     <th>Action</th>
                                 </tr>
@@ -56,6 +56,7 @@
                                                 <img style="height:50px;width:100px" src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->title}}">
                                             </td>
                                             <td>{{ $post->favourite_users->count() }}</td>
+                                            <td>{{$post->comments->count()}}</td>
                                             <td>{{ $post->view_count }}</td>
                                         
                                             <td style='float:left'>

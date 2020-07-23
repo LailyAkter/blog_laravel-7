@@ -48,7 +48,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
       $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'image' => 'required',
             'categories' => 'required',
             'tags' => 'required',
@@ -133,7 +133,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'image' => 'image',
             'categories' => 'required',
             'tags' => 'required',

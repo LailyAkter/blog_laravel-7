@@ -21,26 +21,39 @@ class SettingController extends Controller
     }
 
     public function update(Request $request){
-        $user = $request->validate([
+         $this->validate($request,[
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
+            'image' => 'required|image',
         ]);
-
-        if($request->hasFile('image')){
-            $avatar = $request->file('image');
-			$filename  = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = public_path('uploads/avatars/' . $filename);
-            Image::make($avatar->getRealPath())->resize(468, 249)->save($path);
-            $user = Auth::user();
-            $user->avatar = 'uploads/avatars/'.$filename;
-            $user->name = $request->name;
-            $user->user_name = $request->user_name;
-            $user->about = $request->about;
-            $user->email = $request->email;
-            $user->save();
+        $image = $request->file('image');
+        $slug = Str::slug($request->name);
+        $user = User::findOrFail(Auth::id());
+        if (isset($image))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            if (!Storage::disk('public')->exists('avatar'))
+            {
+             Storage::disk('public')->makeDirectory('avatar');
+            }
+            // Delete old image form Avatar folder
+            if (Storage::disk('public')->exists('avatar/'.$user->image))
+            {
+                Storage::disk('public')->delete('avatar/'.$user->image);
+            }
+            $avatar = Image::make($image)->resize(500,500)->stream();
+            Storage::disk('public')->put('avatar/'.$imageName,$avatar);
+        } else {
+            $imageName = $user->image;
         }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->user_name = $request->user_name;
+        $user->image = $imageName;
+        $user->about = $request->about;
+        $user->save();
 
-        
         Toastr::success('Profile Updated Successfully','Success');
 
         return redirect('admin/dashboard');

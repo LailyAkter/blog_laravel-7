@@ -32,7 +32,7 @@
 
                                             <div class="blog-image"><img src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->title}}"></div>
 
-                                            <a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src='' alt="{{$post->user->name}}"></a>
+                                            <a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src="{{asset('storage/avatar/'.$post->user->image)}}" alt="{{$post->user->name}}"></a>
 
                                             <div class="blog-info">
 

@@ -48,7 +48,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'image' => 'required',
             'categories' => 'required',
             'tags' => 'required',
@@ -146,7 +146,7 @@ class PostController extends Controller
             return redirect()->back();
         }
         $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'image' => 'image',
             'categories' => 'required',
             'tags' => 'required',

@@ -40,7 +40,7 @@
 							<div class="post-info">
 
 								<div class="left-area">
-									<a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+									<a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src="{{asset('storage/avatar/'.$post->user->image)}}" alt="{{$post->user->name}}"></a>
 								</div>
 
 								<div class="middle-area">
@@ -106,7 +106,13 @@
 
 						<div class="sidebar-area about-area">
 							<h4 class="title"><b>ABOUT AUTHOR</b></h4>
-							<p>{{$post->user->about}}</p>
+							<br/>
+							<p>Name : {{$post->user->name}}</p>
+							<br/>
+							<p>Member Since : {{$post->user->created_at->toDateString()}}</p>
+							<br/>
+							<p>Details : {{$post->user->about}}</p>
+						
 						</div>
 
 						<div class="sidebar-area subscribe-area">
@@ -153,7 +159,7 @@
 
                                 <div class="blog-image"><img src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->title}}"></div>
 
-                                <a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
+                                <a class="avatar" href="{{url('profile/'.$post->user->user_name)}}"><img src="{{asset('storage/avatar/'.$post->user->image)}}" alt="{{$post->user->name}}"></a>
 
                                 <div class="blog-info">
 
@@ -234,7 +240,7 @@
 									<div class="post-info">
 
 										<div class="left-area">
-											<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+											<a class="avatar" href="#"><img src="{{asset('storage/avatar/'.$post->user->image)}}" alt="{{$post->user->name}}"></a>
 										</div>
 
 										<div class="middle-area">

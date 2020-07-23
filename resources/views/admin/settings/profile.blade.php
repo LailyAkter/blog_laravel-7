@@ -10,7 +10,7 @@
                         <h2>Profile Update</h2>
                     </div>
                     <div class="body">
-                        <form action="{{url('admin/profile/update')}}" method='post'>
+                        <form action="{{url('admin/profile/update')}}" method='post' enctype="multipart/form-data">
                         @csrf
                             <div class="form-group form-float">
                                 <div class='form-line'>
