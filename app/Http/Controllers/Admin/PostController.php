@@ -13,6 +13,10 @@ use Carbon\Carbon;
 use App\Post;
 use App\Tag;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Notifications\AuthorPostApproved;
+use App\Subscriber;
+use Notification;
+use App\Notifications\SubscriberList;
 
 class PostController extends Controller
 {
@@ -91,6 +95,12 @@ class PostController extends Controller
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
 
+        $subscribers = Subscriber::all();
+
+        foreach($subscribers as $subscriber){
+            Notification::route('mail',$subscriber->email)
+                ->notify(new SubscriberList($post));
+        }
         Toastr::success('Post Successfully Saved :)','Success');
         return redirect('admin/post');
     }
@@ -215,11 +225,19 @@ class PostController extends Controller
         if($post->is_approved == false){
             $post->is_approved = true;
             $post->save();
-
             Toastr::success('Post Successfully Approved :)','Success');
+            $post->user->notify(new AuthorPostApproved($post)); 
+
+            $subscribers = Subscriber::all();
+            foreach($subscribers as $subscriber){
+            Notification::route('mail',$subscriber->email)
+                ->notify(new SubscriberList($post));
+            }
         }else{
             Toastr::info('Post Already Approved :)','Info');
         }
+
+
         return redirect()->back();
     }
 }
