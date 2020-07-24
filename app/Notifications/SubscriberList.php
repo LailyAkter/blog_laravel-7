@@ -46,7 +46,7 @@ class SubscriberList extends Notification implements ShouldQueue
                     ->line('New Post Avaiable')
                     ->line('Post Title : ' . $this->post->title)
                     ->line('We Hope You Will like this post')
-                    ->action('view post', url('single/post/'.$this->post->slug))
+                    ->action('view post', url('localhost:8000/single/post/'.$this->post->slug))
                     ->line('Thank you for using our application!');
     }
 

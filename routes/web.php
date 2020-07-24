@@ -79,3 +79,10 @@ View::composer('layouts.frontend.partials.footer',function($view){
     $catgories = App\Category::all();
     $view->with('catgories',$catgories);
 });
+
+// Socialite
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','user_name','image','about'
+        'name', 'email', 'password','user_name','image','about','facebook_id'
     ];
 
     /**
@@ -56,6 +56,10 @@ class User extends Authenticatable
     public function scopeUser($query)
     {
         return $query->where('role_id',2);
+    }
+
+    public function socials(){
+        return $this->hasMany('App\Social');
     }
 
 }

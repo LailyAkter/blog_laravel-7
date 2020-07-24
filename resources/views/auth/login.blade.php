@@ -7,7 +7,7 @@
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="card o-hidden border-0 shadow-lg" style='margin: 10rem 0px;'>
+            <div class="card o-hidden border-0 shadow-lg" style='margin:2rem 0px;'>
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
@@ -54,8 +54,14 @@
                                         Login
                                     </button>
                                     <hr>
-                                    <a href="login/github" class="btn btn-success btn-user btn-block">
+                                    <a href="login/github" class="btn btn-dark btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Login with Github
+                                    </a>
+                                    <a href="login/facebook" class="btn btn-primary btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                    </a>
+                                    <a href="login/google" class="btn btn-info btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Google
                                     </a>
                                 </form>
                                 <hr>
