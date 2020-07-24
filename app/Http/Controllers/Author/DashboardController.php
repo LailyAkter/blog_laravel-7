@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Auth;
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+
     public function index()
     {
         $user = Auth::user();

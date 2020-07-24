@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth', 'admin')->namespace('Admin')->prefix('admin')->group(function () {
     Route::get('dashboard','DashboardController@index');
