@@ -2,7 +2,7 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="" width="48" height="48" alt="User" />
+            <img src="{{asset('storage/avatar/'.Auth::user()->image)}}" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
@@ -10,6 +10,36 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
+                    @if(Request::is('admin*'))
+                        <li class="{{ Request::is('admin/profile*') ? 'active' : '' }}">
+                            <a href="{{ url('admin/profile') }}">
+                                <i class="material-icons">settings</i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('admin/password*') ? 'active' : '' }}">
+                            <a href="{{ url('admin/password') }}">
+                                <i class="material-icons">settings</i>
+                                <span>Password Change</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(Request::is('author*'))
+                        <li class="{{ Request::is('author/profile*') ? 'active' : '' }}">
+                            <a href="{{ url('author/profile') }}">
+                                <i class="material-icons">settings</i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('author/password*') ? 'active' : '' }}">
+                            <a href="{{ url('author/password') }}">
+                                <i class="material-icons">settings</i>
+                                <span>Password Change</span>
+                            </a>
+                        </li>
+                    @endif
+
                     <li role="seperator" class="divider"></li>
 
                     <li>
