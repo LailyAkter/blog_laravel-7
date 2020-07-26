@@ -54,11 +54,8 @@
                                         Login
                                     </button>
                                     <hr>
-                                    <a href="login/github" class="btn btn-dark btn-user btn-block">
+                                    <a href="login/github" class="btn btn-success btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Login with Github
-                                    </a>
-                                    <a href="login/facebook" class="btn btn-primary btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                     </a>
                                     <a href="login/google" class="btn btn-info btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Login with Google
