@@ -60,15 +60,15 @@
                                                 <a href="{{ url('admin/tag',$tag->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
-                                            </td>
-                                            <td style='float:left'>
-                                                <form action="{{url('admin/tag',$tag->id)}}" method='POST'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type='submit' class="btn btn-danger btn-sm">
-                                                        <i class="material-icons">delete</i>
-                                                    </button>
-                                                </form>
+                                                <div style='float:right;margin-left:10px'>
+                                                    <form action="{{url('admin/tag',$tag->id)}}" method='POST'>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type='submit' class="btn btn-danger btn-sm">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -96,5 +96,5 @@
     <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 
     <script src="{{ asset('admin/js/pages/tables/jquery-datatable.js') }}"></script>
-    
+
 @endpush

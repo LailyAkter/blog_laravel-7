@@ -3,8 +3,8 @@
 @section('title','Post')
 
 @push('css')
-    <!-- JQuery DataTable Css -->
-    <link href="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+  <!-- JQuery DataTable Css -->
+    <link href="{{ asset('admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -83,20 +83,18 @@
                                                 <a href="{{ url('admin/post/'.$post->id) }}" class="btn btn-primary waves-effect">
                                                    <i class="material-icons">visibility</i>
                                                 </a>
-                                            </td>
-                                            <td style='float:left'>
-                                                <a href="{{ url('admin/post/'.$post->id.'/edit') }}" class="btn btn-info waves-effect">
+                                                <a href="{{ url('admin/post',$post->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
-                                            </td>
-                                            <td style='float:left'>
-                                                <form action="{{url('admin/post/'.$post->id)}}" method='POST'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type='submit' class="btn btn-danger btn-sm">
-                                                        <i class="material-icons">delete</i>
-                                                    </button>
-                                                </form>
+                                                <div style='float:right;margin-left:5px'>
+                                                    <form action="{{url('admin/post',$post->id)}}" method='POST'>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type='submit' class="btn btn-danger btn-sm">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -112,16 +110,16 @@
 @endsection
 
 @push('js')
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
+   <!-- Jquery DataTable Plugin Js -->
+    <script src="{{ asset('admin/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 
-    <script src="{{ asset('assets/backend/js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/tables/jquery-datatable.js') }}"></script>
 @endpush

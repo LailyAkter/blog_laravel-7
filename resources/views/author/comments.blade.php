@@ -41,7 +41,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <a href="#" target="_blank">
-                                                                <img src="" alt="" class='media-object'>
+                                                                <img width='64' height='64' src="{{asset('storage/avatar/'.$comment->user->image)}}" alt="" class='media-object'>
                                                             </a>
                                                         </div>
                                                         <div class="media-body">

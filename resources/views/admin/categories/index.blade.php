@@ -62,18 +62,18 @@
                                             <td>{{ $category->created_at->diffForHumans()}}</td>
                                             <td>{{ $category->updated_at->diffForHumans() }}</td>
                                             <td style='float:left'>
-                                                <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info waves-effect">
+                                                <a href="{{ url('admin/category',$category->id.'/edit') }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
-                                            </td>
-                                            <td style='float:left'>
-                                                <form action="{{route('category.destroy',$category->id)}}" method='POST'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type='submit' class="btn btn-danger btn-sm">
-                                                        <i class="material-icons">delete</i>
-                                                    </button>
-                                                </form>
+                                                <div style='float:right;margin-left:10px'>
+                                                    <form action="{{url('admin/category',$category->id)}}" method='POST'>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type='submit' class="btn btn-danger btn-sm">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
